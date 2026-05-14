@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Task Management</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Smart Task Management System</h1>
+
+        <button onclick="logoutUser()"> Logout </button>
+        <!-- TASK FORM -->
+        <div class="form-container">
+            <h2>Add Task</h2>
+            <form id="taskForm">
+
+                <input type="text"
+                    id="title"
+                    placeholder="Task Title"
+                    required>
+
+                <textarea 
+                    id="description"
+                    autocomplete="off"
+                    placeholder="Task Description"
+                    rows="5"></textarea>
+
+                <select id="priority">
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+
+                <select id="status">
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                </select>
+                <input 
+                    type="date" 
+                    id="dueDate"
+                >
+
+                <button type="submit">
+                    Add Task
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- ANALYTICS -->
+
+        <div class="analytics-container">
+
+            <div class="card">
+                <h3>Total Tasks</h3>
+                <h1 id="totalTasks">0</h1>
+            </div>
+
+            <div class="card">
+                <h3>Completed</h3>
+                <h1 id="completedTasks">0</h1>
+            </div>
+
+            <div class="card">
+                <h3>Pending</h3>
+                <h1 id="pendingTasks">0</h1>
+            </div>
+
+            <div class="card">
+                <h3>Completion %</h3>
+                <h1 id="completionPercentage">0%</h1>
+            </div>
+
+        </div>
+        <div class="chart-container">
+            <canvas id="taskChart"></canvas>    
+        </div>
+
+        <div class="search-filter-container">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search Tasks"
+            >
+
+            <select id="filterSelect">
+                <option value="All"> All Tasks </option>
+                <option value="Pending"> Pending </option>
+                <option value="Completed"> Completed </option>
+                <option value="High"> High Priority </option>
+                <option value="Medium"> Medium Priority </option>
+                <option value="Low"> Low Priority </option>
+            </select>
+        </div>
+
+        <!-- TASK TABLE -->
+        <div class="table-container">
+            <h2>Task List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Due Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="taskTableBody">
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

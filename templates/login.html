@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Login</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="auth-container">
+
+        <h1>Login</h1>
+
+        <input type="text" id="loginUsername" placeholder="Username">
+
+        <input type="password" id="loginPassword" placeholder="Password">
+
+        <button onclick="loginUser()"> Login </button>
+
+        <p>
+            Don't have an account?
+            <a href="/register-page">Register</a>
+        </p>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
