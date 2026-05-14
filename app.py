@@ -3,6 +3,10 @@ from flask import Flask
 from flask import render_template
 from extensions import db, login_manager, socketio
 
+from models.user import User
+from models.task import Task
+
+import os  
 app = Flask(__name__)
 app.config.from_object('config.Config')
 db.init_app(app)
